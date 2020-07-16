@@ -3,10 +3,45 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
 			}
 		}
-	],
+		,{
+			"path" : "pages/message/message",
+			"style" : {
+				"navigationBarTitleText": "消息通知"
+			}
+			}
+		,{
+			"path" : "pages/identify/identify",
+			"style" : {
+				"navigationBarTitleText": "个人中心"
+			}
+		}
+    ],
+		"tabBar": {
+		    "color": "#7A7E83",
+		    "selectedColor": "#7A7E83",
+		    "borderStyle": "black",
+				"height":"70px",
+		    "backgroundColor": "#ffffff",
+		    "list": [{
+		        "pagePath": "pages/index/index",
+		        "iconPath": "static/img/tabBar/index.png",
+		        "selectedIconPath": "static/img/tabBar/index-sel.png",
+		        "text": "首页"
+		    }, {
+		        "pagePath": "pages/message/message",
+		        "iconPath": "static/img/tabBar/msg.png",
+		        "selectedIconPath": "static/img/tabBar/msg-sel.png",
+		        "text": "消息通知"
+		    },{
+		        "pagePath": "pages/identify/identify",
+		        "iconPath": "static/img/tabBar/self.png",
+		        "selectedIconPath": "static/img/tabBar/self-sel.png",
+		        "text": "个人中心"
+		    }]
+		},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
