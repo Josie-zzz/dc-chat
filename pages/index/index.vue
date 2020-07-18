@@ -1,7 +1,13 @@
 <template>
 	<view class="content">
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<view class="top box" @click="topTo">
+			在线咨询
+		</view>
+		<view class="middin box" @click="middinTo">
+			预约健康咨询服务
+		</view>
+		<view class="bottom box" @click="bottomTo">
+			查阅健康方案
 		</view>
 	</view>
 </template>
@@ -17,7 +23,21 @@
 
 		},
 		methods: {
-
+			topTo () {
+				uni.navigateTo({
+					url: '../consult/online'
+				})
+			},
+			middinTo () {
+				uni.navigateTo({
+					url: '../consult/appoint'
+				})
+			},
+			bottomTo () {
+				uni.navigateTo({
+					url: '../consult/find'
+				})
+			} 
 		}
 	}
 </script>
@@ -27,25 +47,33 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-around;
 	}
 
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+ .box {
+	 color: #FFFFFF;
+	 font-size: 50rpx;
+	 font-weight: bold;
+	 line-height: 280rpx;
+	 text-align: center;
+	 width: 680rpx;
+	 height: 280rpx;
+	 border-radius: 20rpx;
+ }
+ 
+ .top, .bottom {
+	 letter-spacing: 10rpx;
+ }
+ 
+ .top {
+	 background-color: #065085;
+ }
+ 
+ .middin {
+	 background-color: #990033;
+ }
+ 
+ .bottom {
+	 background-color: #ff9900;
+ }
 </style>

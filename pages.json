@@ -18,30 +18,41 @@
 				"navigationBarTitleText": "个人中心"
 			}
 		}
+		,{
+				"path" : "pages/consult/online",
+				"style" : {}
+		}
+		,{
+				"path" : "pages/consult/appoint",
+				"style" : {}
+		}
+		,{
+				"path" : "pages/consult/find",
+				"style" : {}
+		}
     ],
-		"tabBar": {
-		    "color": "#7A7E83",
-		    "selectedColor": "#7A7E83",
-		    "borderStyle": "black",
-				"height":"70px",
-		    "backgroundColor": "#ffffff",
-		    "list": [{
-		        "pagePath": "pages/index/index",
-		        "iconPath": "static/img/tabBar/index.png",
-		        "selectedIconPath": "static/img/tabBar/index-sel.png",
-		        "text": "首页"
-		    }, {
-		        "pagePath": "pages/message/message",
-		        "iconPath": "static/img/tabBar/msg.png",
-		        "selectedIconPath": "static/img/tabBar/msg-sel.png",
-		        "text": "消息通知"
-		    },{
-		        "pagePath": "pages/identify/identify",
-		        "iconPath": "static/img/tabBar/self.png",
-		        "selectedIconPath": "static/img/tabBar/self-sel.png",
-		        "text": "个人中心"
-		    }]
-		},
+	"tabBar": {
+		"color": "#7A7E83",
+		"borderStyle": "white",
+		"selectedColor": "#7A7E83",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/img/tabBar/index.png",
+			"selectedIconPath": "static/img/tabBar/index-sel.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/message/message",
+			"iconPath": "static/img/tabBar/msg.png",
+			"selectedIconPath": "static/img/tabBar/msg-sel.png",
+			"text": "消息通知"
+		},{
+			"pagePath": "pages/identify/identify",
+			"iconPath": "static/img/tabBar/self.png",
+			"selectedIconPath": "static/img/tabBar/self-sel.png",
+			"text": "个人中心"
+		}]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
