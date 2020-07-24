@@ -20,7 +20,9 @@
 		}
 		,{
 				"path" : "pages/consult/online",
-				"style" : {}
+				"style" : {
+					"navigationBarTitleText":"健康在线群聊"
+				}
 		}
 		,{
 				"path" : "pages/consult/appoint",
