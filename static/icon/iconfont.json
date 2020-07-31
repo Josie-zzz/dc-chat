@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2678643",
+      "name": "文件",
+      "font_class": "wenjian1",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "11372711",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e8ba",
+      "unicode_decimal": 59578
+    },
+    {
+      "icon_id": "16116708",
+      "name": "alfred",
+      "font_class": "alfred",
+      "unicode": "e7b3",
+      "unicode_decimal": 59315
+    },
+    {
+      "icon_id": "16116710",
+      "name": "abigail",
+      "font_class": "abigail",
+      "unicode": "e7b4",
+      "unicode_decimal": 59316
+    },
+    {
+      "icon_id": "16116712",
+      "name": "audrey",
+      "font_class": "audrey",
+      "unicode": "e7b5",
+      "unicode_decimal": 59317
+    },
+    {
+      "icon_id": "16116713",
+      "name": "andy",
+      "font_class": "andy",
+      "unicode": "e7b6",
+      "unicode_decimal": 59318
+    },
+    {
       "icon_id": "1486837",
       "name": "添加",
       "font_class": "tianjia",
