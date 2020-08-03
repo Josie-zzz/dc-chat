@@ -3,8 +3,14 @@
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "login"
+				"navigationBarTitleText": "登陆"
 			}
+		},
+		{
+				"path" : "pages/login/auth",
+				"style" : {
+					"navigationBarTitleText": "授权"
+				}
 		},
 		{
 			"path": "pages/index/index",

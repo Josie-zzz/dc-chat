@@ -9,10 +9,10 @@
 						{{ userMsg.date }}
 					</view>
 					<!-- 自己发的消息 -->
-					<view v-if=" userMsg.uid === '1' " class="my-msg" :id=" 'msg'+ userMsg.id ">
+					<view v-if=" userMsg.uid === uid " class="my-msg" :id=" 'msg'+ userMsg.id ">
 						<!-- 头像 -->
 						<view class="avater right">
-							<image src="../../static/img/avater/audrey.png" mode="aspectFill"></image>
+							<image :src="avatarUrl" mode="aspectFill"></image>
 						</view>
 						<!-- 文本消息 -->
 						<view class="right">
@@ -114,14 +114,6 @@
 	//import parseHtml from '../../common/html-parser.js' //将 HTML String转化为 nodes 数组
 	import Emotion from '../../components/Emotion/index.vue'
 	
-	//当前用户
-	var sendData = {
-		type: "login",
-		uid: "1",
-		client_name: "1",
-		room_id: "2"
-	}
-	
 	export default {
 		components: {
 			Emotion
@@ -133,6 +125,8 @@
 				scrollToId: '',
 				reg: /\#[\S]{1,3}\;/gi,
 				showNum: 0, //显示当前的模块，0是不显示，1显示表情，2显示多媒体多选
+				avatarUrl: getApp().globalData.avatarUrl, //当前用户头像
+				uid: getApp().globalData.uid,  //当前用户id
 			}
 		},
 		computed:{
@@ -157,15 +151,15 @@
 		methods: {
 			getChatList () {	//获取聊天消息
 				uni.request({
-				    url: 'http://gdoctor.xazhima.com/api/v1.0/api.php', 
+				    url: getApp().globalData.doctorURL, 
 						method: 'POST',
 						header: {
 							'content-type': 'application/x-www-form-urlencoded'
 						},
 				    data: {
 							method: 'room_msg_list',
-				      room_id: sendData.room_id, 						//房间号
-							uid: sendData.uid,									//自己的聊天id
+				      room_id: getApp().globalData.roomId, 						//房间号
+							uid: getApp().globalData.uid,									//自己的聊天id
 							current_msg_id: '',
 							direction: '',
 							page: '1',
@@ -176,14 +170,15 @@
 				    
 				    success: (res) => {
 							if(res.data.code === 200){
-								console.log('获取聊天列表成功');
 								// console.log(res.data.msg)
-								
-								this.room_list = res.data.msg
-								this.$nextTick(() => {
-									//进入页面滚动到底部
-									this.scrollToId = 'msg' + this.room_list[this.room_list.length - 1].id
-								});
+								if(res.data.msg.length){
+									console.log('获取聊天列表成功');
+									this.room_list = res.data.msg
+									this.$nextTick(() => {
+										//进入页面滚动到底部
+										this.scrollToId = 'msg' + this.room_list[this.room_list.length - 1].id
+									});
+								}
 							}	
 				    },
 						fail: (res) => {
@@ -192,8 +187,15 @@
 				});
 			},
 			createSocket () {
+				//当前用户
+				var sendData = {
+					type: "login",
+					uid: getApp().globalData.uid,
+					client_name: "1",
+					room_id: getApp().globalData.roomId					
+				}
 				uni.connectSocket({
-					url: 'wss://gdoctor.xazhima.com/wss',				//注意：接口成功不意味着链接就打开了
+					url: getApp().globalData.socketURL,				//注意：接口成功不意味着链接就打开了
 					success: () => {					//接口调用成功
 						uni.onSocketOpen( (res) => {					//监听链接是否打开
 						  console.log('WebSocket连接已打开！');
@@ -238,7 +240,7 @@
 				}
 				//发送请求
 				uni.request({
-					url: 'http://gdoctor.xazhima.com/api/v1.0/api.php',
+					url: getApp().globalData.doctorURL,
 					method:'POST',
 					header: {
 						'content-type': 'application/x-www-form-urlencoded'
@@ -246,13 +248,13 @@
 					data: {
 						method: 'room_msg_add',
 						timestamp: getApp().globalData.globalTimestamp, 
-						uid:sendData.uid,
+						uid:getApp().globalData.uid,
 						sign: md5('room_msg_add' + getApp().globalData.globalTimestamp),
 						content: msg,
 						extra: Date.now(),
 						size:'',
 						msg_type: String(type),
-						room_id: sendData.room_id,
+						room_id: getApp().globalData.roomId,
 					},
 					success: (res) => {
 						console.log('发送消息成功')
@@ -342,7 +344,7 @@
 			uploadFile (fileSrc, type) {
 				console.log(fileSrc.textValue)
 				uni.uploadFile({
-					url: 'http://gdoctor.xazhima.com/api/v1.0/api.php',
+					url: getApp().globalData.doctorURL,
 					filePath: fileSrc.textValue,
 					name: 'file',
 					formData: {
@@ -459,6 +461,7 @@
 	.avater image {
 		width: 100%;
 		height: 100%;
+		border-radius: 4px;
 	}
 	/* 气泡中文字 */
 	.bubble-txt {

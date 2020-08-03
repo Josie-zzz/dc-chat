@@ -1,11 +1,12 @@
 <template>
 	<view class="content">
 		<view class="ident-self">
-			<image :src="indexAvater" mode="aspectFill"></image><!-- 微信的头像 -->
+			<image class="image-avater" :src="indexAvater" mode="aspectFill"></image><!-- 微信的头像 -->
 			<view class="ident-text">
 				<view class="ident-id">会员编号：74369247982342</view>
 				<view class="ident-date">首评日期：2020年10月20日</view>
 			</view>
+			<image :src="indexAvater" mode="aspectFill" class="image-after"></image>
 		</view>
 		<view class="ident-select">
 			<view class="ident-box">
@@ -32,7 +33,7 @@
 	export default {
 		data() {
 			return {
-				indexAvater: 'http://gdoctor.xazhima.com/userfiles/upload/2020_07_30/202007301744287095.jpg' //当前头像
+				indexAvater: getApp().globalData.avatarUrl //当前头像
 			}
 		},
 		methods: {
@@ -67,7 +68,8 @@
 		box-shadow: 2rpx 2rpx 5rpx 2rpx #cdcdcd;
 		background-color: #f6f6f6;
 	}
-	.ident-self:after {
+	.image-after {
+		display: inline;
 		content: '';
 		position: absolute;
 		top: 0;
@@ -77,18 +79,19 @@
 		background-color: rgba(255,255,255,0.5);
 		z-index: -1;
 		border-radius: 20rpx;
-		/* 此处url应该动态赋值，用scss再说吧 */
-		background-image: url('http://gdoctor.xazhima.com/userfiles/upload/2020_07_30/202007301744287095.jpg');
+		width: 100%;
+		height: 100%;
+		/* background-image: url('http://gdoctor.xazhima.com/userfiles/upload/2020_07_30/202007301744287095.jpg');
 		background-repeat: no-repeat;
 		background-position: center;
-		background-size: cover;
+		background-size: cover; */
 		filter: blur(5px);
 		/* 解决边缘模糊效果减弱,模糊图片小的问题 */
-		margin: -100rpx;
+		/* margin: -100rpx; */
 	}
 	
 	/* 头像 */
-	.ident-self image {
+	.ident-self .image-avater {
 		width: 150rpx;
 		height: 150rpx;
 		display: block;
