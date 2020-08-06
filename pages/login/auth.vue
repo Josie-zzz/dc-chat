@@ -88,7 +88,8 @@
 						console.log('请求授权后返回的信息：')
 						console.log(res)
 						//存当前登陆状态信息
-						this.authStatusInfo = res.data.msg
+						this.authStatusInfo = `<span>${res.data.msg}</span>`
+						console.log(this.authStatusInfo)
 						if(res.data.code === 200){
 							console.log('手机号绑定成功')
 							this.authStatus = true

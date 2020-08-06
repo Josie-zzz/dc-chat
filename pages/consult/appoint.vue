@@ -26,7 +26,7 @@
 					<view class="nowTime">
 						出诊时间 {{ selectedTime }} 
 					</view>
-					<view class="close" @click="() => {isShowBox = false}">x</view>
+					<view class="closeBox" @click="() => {isShowBox = false}">返回</view>
 					<view class="table">
 						<view class="header">
 							<view class="tr">
@@ -38,12 +38,12 @@
 						<view class="body">
 							
 							<template v-if="timeList.length">
-								<block v-for="time in timeList" :key="time.id">
+								<block v-for="(time, index) in timeList" :key="time.id">
 									<view class="tr">
 										<view class="td1 td">{{ time.starttime }} -- {{ time.endtime }}</view>
 										<view class="td2 td">{{time.money}}</view>
 										<view class="td3 td">
-											<view class="txt" @click="open">确定预约</view>
+											<view class="txt" ref="timeInfo" @click="openComInfro(index)">确定预约</view>
 										</view>
 									</view>
 								</block>
@@ -51,7 +51,7 @@
 							
 							<!-- 确定预约信息弹框 -->
 							<uni-popup ref="popup" type="dialog">
-							    <uni-popup-dialog type="input" mode="base" title="确定预约" content="明天修改" message="成功消息" :duration="2000" :before-close="true" @close="close" @confirm="confirm"></uni-popup-dialog>
+							    <uni-popup-dialog type="input" mode="base" title="确定预约" :content="popContent1" :duration="2000" :before-close="true" @close="close" @confirm="confirm"></uni-popup-dialog>
 							</uni-popup>
 						</view>
 					</view>
@@ -83,9 +83,10 @@
 				name: '',							//医生名字
 				title: '',						//医生头衔
 				desc: '',							//医生描述
-				isShowBox: false,		//是否显示预约具体信息
+				isShowBox: false,			//是否显示预约具体信息
 				timeList: null,				//某一天的时间预约信息，临时的存储,如果没有预约会被设置为null
-				selTime: '',			//当前被选中的时间
+				selTime: '',					//当前被选中的时间
+				popContent1: '',  		//确定预约的确认信息
 			};
 		},
 		computed: {
@@ -113,6 +114,16 @@
 				// 输入框的值
 				console.log(value)
 				done()
+			},
+			openComInfro(index){			//点击确定预约
+				let str = (`
+					<div>预约上医:${this.name}</div>
+					<div>预约时间:${this.selectedTime} ${this.timeList[index].starttime} - ${this.timeList[index].endtime} </div>
+					<div>预约费用:${this.timeList[index].money}</div>
+				`)	
+				this.popContent1 = str
+				this.open()
+				// console.log(index)
 			},
 			async change(e) {
 				// console.log(e);
@@ -222,7 +233,7 @@
 							val.endtime = this.transTime(val.endtime)
 						})
 						this.timeList = res.data.msg
-						// console.log(this.timeList)
+						console.log(this.timeList)
 					}
 				}
 			},
@@ -308,18 +319,14 @@
 		text-align: center;
 		font-weight: 600;
 	}
-	.close {
+	.closeBox {
 		position: absolute;
 		top: 10rpx;
-		right: 10rpx;
-		width: 60rpx;
-		height: 60rpx;
-		font-size: 45rpx;
+		right: 20rpx;
+		font-size: 30rpx;
 		line-height: 60rpx;
 		text-align: center;
-		background-color: #bf2924;
-		color: #edc4c3;
-		border-radius: 50%;
+		color: #bf2924;
 	}
 	.table {
 		flex: 1;

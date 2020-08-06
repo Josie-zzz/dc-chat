@@ -38,7 +38,9 @@
 		}
 		,{
 				"path" : "pages/consult/appoint",
-				"style" : {}
+				"style" : {
+					"navigationBarTitleText":"预约服务"
+				}
 		}
 		,{
 				"path" : "pages/consult/find",
@@ -74,12 +76,22 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"condition": { //模式配置，仅开发期间生效
-	    "current": 0, //当前激活的模式（list 的索引项）
+	    "current": 1, //当前激活的模式（list 的索引项）
 	    "list": [{
-	            "name": "appoint", //模式名称
-	            "path": "pages/consult/appoint", //启动页面，必选
-	            "query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
-	        }
+						"name": "appoint", //模式名称
+						"path": "pages/consult/appoint", //启动页面，必选
+						"query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
+				},
+				{
+					"name": "auth", //模式名称
+					"path": "pages/login/auth", //启动页面，必选
+					"query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
+				},
+				{
+					"name": "index", //模式名称
+					"path": "pages/index/index", //启动页面，必选
+					"query": "interval=4000&autoplay=false" //启动参数，在页面的onLoad函数里面得到。
+				}
 	    ]
 	}
 }

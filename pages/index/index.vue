@@ -1,13 +1,19 @@
 <template>
 	<view class="content">
-		<view class="top box" @click="topTo">
-			在线咨询
-		</view>
-		<view class="middin box" @click="middinTo">
-			预约健康咨询服务
-		</view>
-		<view class="bottom box" @click="bottomTo">
-			查阅健康方案
+		<image src="../../static/img/bg/bg5.png" mode="aspectFill"></image>
+		<view class="low-content">
+			<view class="top box" @click="topTo">
+				<view class="iconfont">&#xe601;</view>
+				<view class="top-text">在线咨询</view>
+			</view>
+			<view class="middin box" @click="middinTo">
+				<view class="iconfont">&#xe62d;</view>
+				<view class="middin-text">预约健康咨询服务</view>
+			</view>
+			<view class="bottom box" @click="bottomTo">
+				<view class="iconfont">&#xe662;</view>
+				<view class="middin-text">查阅健康方案</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -43,37 +49,41 @@
 </script>
 
 <style>
-	.content {
+
+	.content image {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+	}
+	.low-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: space-around;
+		
+		padding-top: 380rpx;
 	}
-
  .box {
-	 color: #FFFFFF;
-	 font-size: 50rpx;
-	 font-weight: bold;
-	 line-height: 280rpx;
-	 text-align: center;
-	 width: 680rpx;
-	 height: 280rpx;
-	 border-radius: 20rpx;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
+		box-sizing: border-box;
+		z-index: 1;
+		overflow: hidden;
+		width: 650rpx;
+		height: 180rpx;
+		padding: 50rpx;
+		margin-bottom: 50rpx;
+		border-radius: 15rpx;
+		background-color: rgba(255,255,255,0.8);
+		font-size: 18px;
+		color: #555555;
+		box-shadow: darkgrey 0rpx 0rpx 20rpx 0rpx;
  }
- 
- .top, .bottom {
-	 letter-spacing: 10rpx;
+ .box .iconfont {
+	 font-size: 75rpx;
  }
- 
- .top {
-	 background-color: #065085;
- }
- 
- .middin {
-	 background-color: #990033;
- }
- 
- .bottom {
-	 background-color: #ff9900;
- }
+
 </style>

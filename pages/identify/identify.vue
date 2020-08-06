@@ -10,20 +10,34 @@
 		</view>
 		<view class="ident-select">
 			<view class="ident-box">
-				<text class="iconfont">&#xe60d;</text>
+				<view class="iconfont">&#xe60d;</view>
 				<view class="ident-msg">我的预约</view>
 			</view>
 			<view class="ident-box">
-				<text class="iconfont">&#xe68a;</text>
+				<view class="iconfont">&#xe68a;</view>
 				<view class="ident-msg">健康方案</view>
 			</view>
 			<view class="ident-box">
-				<text class="iconfont">&#xe623;</text>
+				<view class="iconfont">&#xe623;</view>
 				<view class="ident-msg">报告上传</view>
 			</view>
 			<view class="ident-box">
-				<text class="iconfont">&#xe62d;</text>
+				<view class="iconfont">&#xe62d;</view>
 				<view class="ident-msg">个人信息</view>
+			</view>
+		</view>
+		<view class="ident-about">
+			<view class="kefu">
+				<view>联系客服</view>
+				<view class="iconfont">&#xe636;</view>
+			</view>
+			<view class="us">
+				<view>关于我们</view>
+				<view class="iconfont">&#xe636;</view>
+			</view>
+			<view class="other">
+				<view>其他设置</view>
+				<view class="iconfont">&#xe636;</view>
 			</view>
 		</view>
 	</view>
@@ -48,12 +62,8 @@
 		flex-direction: column;
 		align-items: center;
 		overflow: scroll;
+		background-color: #f0f0f0;
 	}
-	.ident-select, .ident-self {
-		width: 660rpx;
-		border-radius: 20rpx;
-	}
-	
 	/* 在这个块元素里面实现毛玻璃 */
 	.ident-self {
 		position: relative;
@@ -62,11 +72,9 @@
 		align-items: center;
 		z-index: 1;
 		overflow: hidden;
-		
-		height: 380rpx;
-		margin-top: 60rpx;
-		box-shadow: 2rpx 2rpx 5rpx 2rpx #cdcdcd;
-		background-color: #f6f6f6;
+		width: 100%;
+		height: 460rpx;
+		background-color: #FFFFFF;
 	}
 	.image-after {
 		display: inline;
@@ -78,7 +86,6 @@
 		bottom: 0;
 		background-color: rgba(255,255,255,0.5);
 		z-index: -1;
-		border-radius: 20rpx;
 		width: 100%;
 		height: 100%;
 		/* background-image: url('http://gdoctor.xazhima.com/userfiles/upload/2020_07_30/202007301744287095.jpg');
@@ -92,6 +99,7 @@
 	
 	/* 头像 */
 	.ident-self .image-avater {
+		position: absolute;
 		width: 150rpx;
 		height: 150rpx;
 		display: block;
@@ -99,35 +107,56 @@
 		margin: 30rpx 0;
 	}
 	.ident-text {
-		color: #c26e41;
-		font-size: 32rpx;
-		line-height: 50rpx;
+		box-sizing: border-box;
+		width: 680rpx;
+		height: 250rpx;
+		margin-top: 105rpx;
+		padding-top: 100rpx;
+		background-color: rgba(255,255,255,0.6);
+		color: #555555;
+		font-size: 16px;
+		text-align: center;
+		line-height: 26px;
 		font-weight: bold;
+		border-radius: 15rpx;
+		box-shadow: darkgrey 0rpx 0rpx 20rpx 0rpx;
 	}
 	.ident-select {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		/* height: 380rpx; */
-		width: 540rpx;
+		box-sizing: border-box;
+		width: 680rpx;
+		height: 250rpx;
 		background-color: #FFFFFF;
-		margin-top: 70rpx;
-		box-shadow: 0rpx 0rpx 5rpx 2rpx #cdcdcd;
+		margin-top: 50rpx;
 		padding: 60rpx;
-		padding-top: 0;
-	}
-	.ident-box {
-		margin-top: 60rpx;
-		width: 33.33%;
-		text-align: center;
+		border-radius: 15rpx;
 	}
 	.ident-box .ident-msg {
-		font-size: 32rpx;
-		line-height: 60rpx;
+		font-size: 24rpx;
+		margin-top: 25rpx;
 	}
 	.ident-box .iconfont {
-		font-size: 70rpx;
-		display: block;
+		font-size: 60rpx;
+		text-align: center;
+	}
+	.ident-about {
+		width: 680rpx;
+		height: 300rpx;
+		background-color: #FFFFFF;
+		margin-top: 25rpx;
+		border-radius: 15rpx;
+	}
+	.ident-about>view {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		box-sizing: border-box;
+		width: 100%;
+		height: 33.33%;
+		padding: 0 50rpx;
 	}
 </style>
